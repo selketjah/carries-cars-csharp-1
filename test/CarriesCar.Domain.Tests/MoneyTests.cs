@@ -1,5 +1,4 @@
 using CarriesCars.Domain;
-using System;
 using Xunit;
 
 namespace CarriesCar.Domain.Tests

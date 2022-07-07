@@ -2,9 +2,9 @@
 
 namespace CarriesCars.Domain.PricingEngine
 {
-    public class PricingEngine : IPricingEngine<TrustedMoney>
+    public class PricingEngine : IPricingEngine<Money>
     {
-        public IMoney<TrustedMoney> CalculatePrice(IMoney<TrustedMoney> pricePerMinute, IDuration duration)
+        public Money CalculatePrice(Money pricePerMinute, IDuration duration)
         {
             if (duration is UnVerifiedDuration) throw new ArgumentException("Duration must be verified");
 

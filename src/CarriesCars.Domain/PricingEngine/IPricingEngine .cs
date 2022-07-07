@@ -2,9 +2,9 @@
 
 namespace CarriesCars.Domain.PricingEngine
 {
-    public interface IPricingEngine<T> where T : ValueObject, IMoney<T>
+    public interface IPricingEngine<T> where T : Money
     {
-        IMoney<T> CalculatePrice(IMoney<T> pricePerMinute, IDuration duration);
+        Money CalculatePrice(Money pricePerMinute, IDuration duration);
 
         IDuration DurationInMinutes(int minutes);
     }
