@@ -13,11 +13,14 @@ namespace CarriesCars.Domain.PricingEngine
 
         public Money CalculatePrice(Money pricingRatePerMinute, IVerifiedDuration duration, Money reservationRatePerMinute, IVerifiedDuration reservationDuration) {
             // I have "Money", but by adding reservation costs, I may a new concept => Rate Per Minute
-            
-            var drivePrice = CalculatePrice(pricingRatePerMinute, duration);
-            var reservationPrice = CalculatePrice(reservationRatePerMinute, reservationDuration);
 
-            return drivePrice.Add(reservationPrice);
+            var drivePrice = new Price(pricingRatePerMinute, duration);
+            var reservationPrice = new Price(reservationRatePerMinute, reservationDuration);
+
+            var driveTotal = drivePrice.Calculate();
+            var reservationTotal = reservationPrice.Calculate();
+
+            return driveTotal.Add(reservationTotal);
         }
     }
 
