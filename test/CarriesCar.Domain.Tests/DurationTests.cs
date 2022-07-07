@@ -30,6 +30,15 @@ namespace CarriesCar.Domain.Tests
 
             Assert.Throws<ArgumentException>(verifyFailing);
         }
+
+        [Fact]
+        public void UnVerifiedDuration_Of_Positive_Minutes_Returns_VerifiedDuration() {
+            var verifiedDuration = UnVerifiedDuration.OfMinutes(2).Verify();
+
+            var expected = UnVerifiedDuration.OfVerifiedMinutes(2);
+
+            Assert.Equal(expected, verifiedDuration);
+        }
     }
 
 }

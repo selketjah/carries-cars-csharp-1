@@ -18,12 +18,6 @@ namespace CarriesCars.Domain.PricingEngine
             var reservationPrice = CalculatePrice(reservationRatePerMinute, reservationDuration);
 
             return drivePrice.Add(reservationPrice);
-
-        }
-
-        public IVerifiedDuration DurationInMinutes(int minutes)
-        {
-            return new UnVerifiedDuration(minutes).Verify();
         }
     }
 

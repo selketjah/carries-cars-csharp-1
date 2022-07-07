@@ -8,6 +8,5 @@ namespace CarriesCars.Domain.PricingEngine
 
         Money CalculatePrice(Money pricingRatePerMinute, IVerifiedDuration duration, Money reservationRatePerMinute, IVerifiedDuration reservationDuration);
 
-        IVerifiedDuration DurationInMinutes(int minutes);
     }
 }

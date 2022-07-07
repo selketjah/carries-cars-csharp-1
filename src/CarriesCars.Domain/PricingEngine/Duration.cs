@@ -36,5 +36,10 @@ namespace CarriesCars.Domain.PricingEngine
         {
             return new UnVerifiedDuration(minutes);
         }
+
+        public static IVerifiedDuration OfVerifiedMinutes(int minutes)
+        {
+            return new UnVerifiedDuration(minutes).Verify();
+        }
     }
 }
