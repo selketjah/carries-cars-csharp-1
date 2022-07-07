@@ -12,22 +12,21 @@ namespace CarriesCar.Domain.Tests
 
         public DurationTests()
         {
-            _pricingEngine = new PricingEngine();
+            
         }
 
         [Fact]
-        public void Duration_Verifies_Valid_Input()
-        {
-            var input = new UnVerifiedDuration(1);
-            var expected = input.Verify();
-
-            expected.Should().Be(_pricingEngine.DurationInMinutes(1));
-        }
-
-        [Fact]
-        public void Duration_Throws_Error_For_Invalid_Input()
+        public void Duration_Of_Zero_Minutes_Throws_Error()
         {
             Action verifyFailing = () => new UnVerifiedDuration(0).Verify();
+
+            Assert.Throws<ArgumentException>(verifyFailing);
+        }
+
+        [Fact]
+        public void Duration_Of_Minus_Minutes_Throws_Error()
+        {
+            Action verifyFailing = () => new UnVerifiedDuration(-200).Verify();
 
             Assert.Throws<ArgumentException>(verifyFailing);
         }

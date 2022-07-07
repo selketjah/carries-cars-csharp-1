@@ -15,9 +15,9 @@ namespace CarriesCars.Domain.PricingEngine
             // I have "Money", but by adding reservation costs, I noticed a better name for it => Rate Per Minute
             
             var drivePrice = CalculatePrice(pricingRatePerMinute, duration);
-            var reervationPrice = CalculatePrice(reservationRatePerMinute, reservationDuration);
+            var reservationPrice = CalculatePrice(reservationRatePerMinute, reservationDuration);
 
-            return drivePrice.Add(reervationPrice);
+            return drivePrice.Add(reservationPrice);
 
         }
 
