@@ -1,4 +1,5 @@
 using CarriesCars.Domain;
+using System;
 using Xunit;
 
 namespace CarriesCar.Domain.Tests
@@ -43,6 +44,18 @@ namespace CarriesCar.Domain.Tests
         public void Rounds_Down_Correctly()
         {
             Assert.True(199.EUR() == 100.EUR().MultiplyAndRound(1.994m));
+        }
+
+        [Fact]
+        public void Adding_200_EUR_To_200_EUR_Returns_400_EUR() {
+            Assert.True(400.EUR() == 200.EUR().Add(200.EUR()));
+        }
+
+        [Fact]
+        public void Adding_200_Dollars_To_200_EUR_throws_Error(){
+            Action verifyFailing = () => 200.EUR().Add(200.USD());
+
+            Assert.Throws<ArgumentException>(verifyFailing);
         }
     }
 }

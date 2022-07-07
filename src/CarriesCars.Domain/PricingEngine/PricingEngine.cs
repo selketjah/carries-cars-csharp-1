@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ardalis.GuardClauses;
+using System;
 
 namespace CarriesCars.Domain.PricingEngine
 {
@@ -8,6 +9,16 @@ namespace CarriesCars.Domain.PricingEngine
         {
             decimal durationInMinutes = duration.DurationInMinutes;
             return pricePerMinute.MultiplyAndRound(durationInMinutes);
+        }
+
+        public Money CalculatePrice(Money pricingRatePerMinute, IVerifiedDuration duration, Money reservationRatePerMinute, IVerifiedDuration reservationDuration) {
+            // I have "Money", but by adding reservation costs, I noticed a better name for it => Rate Per Minute
+            
+            var drivePrice = CalculatePrice(pricingRatePerMinute, duration);
+            var reervationPrice = CalculatePrice(reservationRatePerMinute, reservationDuration);
+
+            return drivePrice.Add(reervationPrice);
+
         }
 
         public IVerifiedDuration DurationInMinutes(int minutes)

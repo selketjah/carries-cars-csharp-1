@@ -1,4 +1,5 @@
-﻿using CSharpFunctionalExtensions;
+﻿using Ardalis.GuardClauses;
+using CSharpFunctionalExtensions;
 using System;
 using System.Collections.Generic;
 
@@ -27,6 +28,15 @@ namespace CarriesCars.Domain
             var multipliedAmount = Amount * multiplier;
             var rounded = Convert.ToInt32(multipliedAmount);
             return new Money(rounded, CurrencyIsoCode);
+        }
+
+        public Money Add(Money money) {
+
+            if (this.CurrencyIsoCode != money.CurrencyIsoCode)
+                throw new ArgumentException("Currency must be the same.", this.CurrencyIsoCode);
+
+            var addedAmount = this.Amount + money.Amount;
+            return new Money(addedAmount, this.CurrencyIsoCode);
         }
     }
 
