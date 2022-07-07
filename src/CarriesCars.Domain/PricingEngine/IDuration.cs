@@ -4,4 +4,8 @@
     {
         int DurationInMinutes { get; }
     }
+
+    public interface IVerifiedDuration : IDuration {
+        
+    }
 }

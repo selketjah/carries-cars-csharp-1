@@ -6,7 +6,7 @@ namespace CarriesCars.Domain.PricingEngine
 {
     public class UnVerifiedDuration : ValueObject, IDuration
     {
-        private record VerifiedDuration(int durationInMinutes) : IDuration
+        private record VerifiedDuration(int durationInMinutes) : IVerifiedDuration
         {
             public int DurationInMinutes => durationInMinutes;
         }
@@ -25,7 +25,7 @@ namespace CarriesCars.Domain.PricingEngine
             yield return durationInMinutes;
         }
 
-        public IDuration Verify()
+        public IVerifiedDuration Verify()
         {
             Guard.Against.NegativeOrZero(durationInMinutes, nameof(durationInMinutes), "Duration should be a positive number in minutes");
 
